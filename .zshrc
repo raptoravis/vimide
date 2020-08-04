@@ -34,6 +34,7 @@ fi
 #ZSH_THEME="cobalt2"
 
 ZSH_THEME="xxf"
+HOST="[IDE] ($PROJECT_NAME)"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -50,7 +51,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -147,6 +147,8 @@ elif type compctl &>/dev/null; then
   compctl -K _pm2_completion + -f + pm2
 fi
 
+source $ZSH/oh-my-zsh.sh
+
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -159,7 +161,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 #   Requires: https://asdf-vm.com/#/
 # source "$HOME"/.asdf/asdf.sh
 
-HOST="[IDE] ($PROJECT_NAME)"
 
 # Helper functions
 terraform() {

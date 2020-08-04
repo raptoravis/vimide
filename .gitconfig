@@ -1,0 +1,15 @@
+[core]
+	editor = vim
+
+[color "diff"]
+	whitespace = red reverse
+
+[alias]
+	meld = !git difftool -t meld --dir-diff
+	kdiff3 = !git difftool -t kdiff3 --dir-diff
+	last = log -1
+	l = log --pretty=format:'%C(green)%h %C(yellow) %<(20,trunc) %ar %C(green)%<(20,trunc)%an %C(reset)%<(80,trunc)%s' --date=short
+	ll = log --pretty=format:'%C(green)%h %C(yellow) %<(20,trunc) %ar %C(green)%<(20,trunc)%an %C(reset)%<(80,trunc)%s' --date=short -50
+	lg = log --pretty=format:'%C(green)%h %C(yellow) %<(20,trunc) %ai %C(green)%<(20,trunc)%an %C(reset)%<(80,trunc)%s' --date=short -50
+[oh-my-zsh]
+	hide-dirty = 1

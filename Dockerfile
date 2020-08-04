@@ -56,7 +56,7 @@ RUN git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 COPY .gitconfig ${HOME}/.gitconfig
 
 # Install plugins
-RUN nvim +PlugInstall +qall >> /dev/null
+# RUN nvim +PlugInstall +qall >> /dev/null
 
 # Entrypoint script creates a user called `me` and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh

@@ -11,6 +11,10 @@ RUN apk add tzdata && \
     echo "Europe/London" > /etc/timezone && \
     apk del tzdata
 
+# RUN apk add -U --no-cache \
+#     tmux  ncurses docker py-pip
+# RUN pip install docker-compose
+
 ENV HOME /home/me
 
 # Install tmux
@@ -23,9 +27,6 @@ RUN wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /
 RUN curl -fLo ${HOME}/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # Consult the vimrc file to see what's installed
 COPY .vimrc ${HOME}/.config/nvim/init.vim
-
-# Install plugins
-RUN nvim +PlugInstall +qall >> /dev/null
 
 # In the entrypoint, we'll create a user called `me`
 WORKDIR ${HOME}
@@ -54,6 +55,9 @@ RUN git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm && \
 
 # Copy git config over
 COPY .gitconfig ${HOME}/.gitconfig
+
+# Install plugins
+RUN nvim +PlugInstall +qall >> /dev/null
 
 # Entrypoint script creates a user called `me` and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh

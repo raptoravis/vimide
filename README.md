@@ -5,6 +5,10 @@ This allows an instance of the IDE per project.
 Run via:
 
 ```
+alias editdir='docker run -it --privileged=true --rm -v /$(pwd):/workspace -e HOST_USER_ID=$(id -u $USER) -e HOST_GROUP_ID=$(id -g $USER) -e GIT_USER_NAME="raptoravis" -e GIT_USER_EMAIL="raptoravis@qq.com" -v ~/.ssh:/home/me/.ssh raptoravis/vimide'
+```
+
+```
 function ide() {
   PROJECT_DIR=${PWD##*/}
   PROJECT_NAME=${PWD#"${PWD%/*/*}/"}
@@ -32,7 +36,7 @@ function ide() {
   -e HELM_HOME="/path/to/.helm" \
   --name $CONTAINER_NAME \
   --net host \
-  ls12styler/ide:latest
+  raptoravis/vimide
 }
 ```
 

@@ -7,7 +7,8 @@
 " -----------------------------------------------------------------------------
 
 " Specify a directory for plugins.
-call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Atom One Dark / Light theme.
 Plug 'rakr/vim-one'

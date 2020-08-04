@@ -50,8 +50,7 @@ RUN ${HOME}/.fzf/install || true
 
 # Install TMUX
 COPY .tmux.conf ${HOME}/.tmux.conf
-RUN git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm && \
-    ${HOME}/.tmux/plugins/tpm/bin/install_plugins
+RUN git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm 
 
 # Copy git config over
 COPY .gitconfig ${HOME}/.gitconfig

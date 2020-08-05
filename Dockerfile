@@ -57,6 +57,8 @@ COPY .gitconfig ${HOME}/.gitconfig
 
 # Install plugins
 # RUN nvim +PlugInstall +qall >> /dev/null
+# RUN timeout 20m nvim '+PlugInstall --sync' +qa || true
+RUN nvim '+PlugInstall --sync' +qa || true
 
 # Entrypoint script creates a user called `me` and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh

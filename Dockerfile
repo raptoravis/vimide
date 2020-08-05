@@ -1,9 +1,20 @@
-FROM ls12styler/dind:19.03.9
+FROM ls12styler/dind:19.03.9 
 
 # Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
     bash zsh git git-perl neovim less curl bind-tools \
-    man build-base su-exec shadow openssh-client
+    man build-base su-exec shadow openssh-client 
+
+RUN apk add  fzf htop unzip
+
+ENV RG_VERSION=12.1.1
+RUN set -x \
+  && wget https://github.com/BurntSushi/ripgrep/releases/download/${RG_VERSION}/ripgrep-${RG_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+  && tar xzf ripgrep-${RG_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+  && mv ripgrep-${RG_VERSION}-x86_64-unknown-linux-musl/rg /usr/local/bin/rg
+# COPY --from=build /rg /usr/local/bin/
+#COPY --from=ls12styler/dind:19.03.9 /rg /usr/local/bin/
+#COPY /rg /usr/local/bin/
 
 # Set Timezone
 RUN apk add tzdata && \

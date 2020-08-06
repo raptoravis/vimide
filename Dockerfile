@@ -7,7 +7,7 @@ RUN apk update && apk add -U --no-cache \
 
 RUN apk add fzf htop unzip
 
-RUN apk add rsync htop py3-pip
+RUN apk add rsync python3 py3-pip
 
 
 ENV RG_VERSION=12.1.1

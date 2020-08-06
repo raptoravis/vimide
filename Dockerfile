@@ -5,7 +5,10 @@ RUN apk update && apk add -U --no-cache \
     bash zsh git git-perl neovim less curl bind-tools \
     man build-base su-exec shadow openssh-client 
 
-RUN apk add  fzf htop unzip
+RUN apk add fzf htop unzip
+
+RUN apk add rsync htop python3-pip
+
 
 ENV RG_VERSION=12.1.1
 RUN set -x \

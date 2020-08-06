@@ -1,5 +1,10 @@
 #!/bin/sh
 
+cp -R /tmp/.ssh ${HOME}/.ssh
+chmod 700 ${HOME}.ssh
+chmod 644 ${HOME}.ssh/id_rsa.pub
+chmod 600 ${HOME}.ssh/id_rsa
+
 # Git config
 if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
     git config --global user.name "$GIT_USER_NAME"

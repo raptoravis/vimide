@@ -29,6 +29,8 @@ RUN apk add tzdata && \
 #     tmux  ncurses docker py-pip
 # RUN pip install docker-compose
 
+RUN pip3 install neovim
+
 ENV HOME /home/me
 
 # Install tmux

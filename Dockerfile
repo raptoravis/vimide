@@ -33,6 +33,29 @@ RUN apk add tzdata && \
 
 # RUN pip3 install neovim
 ##########################################################################################################
+RUN apk add --update \
+  git \
+  alpine-sdk build-base\
+  libtool \
+  automake \
+  m4 \
+  autoconf \
+  linux-headers \
+  unzip \
+  ncurses ncurses-dev ncurses-libs ncurses-terminfo \
+  python \
+  python-dev \
+  py-pip \
+  clang \
+  go \
+  nodejs \
+  xz \
+  curl \
+  make \
+  cmake \
+  libintl gettext-dev outils-md5 \
+  && rm -rf /var/cache/apk/*
+
 RUN apk add --virtual build-deps --update \
         autoconf \
         automake \

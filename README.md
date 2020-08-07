@@ -5,7 +5,7 @@ This allows an instance of the IDE per project.
 Run via:
 
 ```
-alias editdir='docker run -it --privileged=true --rm -v /$(pwd):/workspace -e HOST_USER_ID=$(id -u $USER) -e HOST_GROUP_ID=$(id -g $USER) -e GIT_USER_NAME="raptoravis" -e GIT_USER_EMAIL="raptoravis@qq.com" -v ~/.ssh:/home/me/.ssh raptoravis/vimide'
+alias editdir='docker run -it --privileged=true --rm -v /$(pwd):/workspace -e HOST_USER_ID=$(id -u $USER) -e HOST_GROUP_ID=$(id -g $USER) -e GIT_USER_NAME="raptoravis" -e GIT_USER_EMAIL="raptoravis@qq.com" -v /$HOME/.ssh:/tmp/.ssh -v /$HOME/.zsh_history:/home/me/.zsh_history raptoravis/vimide:latest'
 ```
 
 ```
@@ -46,7 +46,3 @@ This mounts the CWD under `/workspace`.
 
 Docker is installed onto the image. When running a container using the image, you can mount the Docker unix socket using `-v /var/run/docker.sock:/var/run/docker.sock`, which will gives access to the host machines Docker services. There is a limitation with using volume mounts because we're actually using the host services. Using something like `-e HOST_PATH=$PWD`, we can the mount directories from the host by prefixing mount options when running containers with `-v $HOST_PATH:/some/path`.
 
-# TODO's
-
-* Secrets?
-** SSH Keys -- mounted host directory for now.

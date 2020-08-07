@@ -5,12 +5,10 @@ RUN apk update && apk add -U --no-cache \
     bash zsh git git-perl less curl bind-tools \
     man build-base su-exec shadow openssh-client 
 
-# RUN apk add neovim
 
 RUN apk add fzf htop unzip
 
 RUN apk add rsync python3 py3-pip
-
 
 ENV RG_VERSION=12.1.1
 RUN set -x \
@@ -31,93 +29,13 @@ RUN apk add tzdata && \
 #     tmux  ncurses docker py-pip
 # RUN pip install docker-compose
 
-# RUN pip3 install neovim
 ##########################################################################################################
-RUN apk add --update \
-  git \
-  alpine-sdk build-base\
-  libtool \
-  automake \
-  m4 \
-  autoconf \
-  linux-headers \
-  unzip \
-  ncurses ncurses-dev ncurses-libs ncurses-terminfo \
-  python \
-  python-dev \
-  py-pip \
-  clang \
-  go \
-  nodejs \
-  xz \
-  curl \
-  make \
-  cmake \
-  libintl gettext-dev outils-md5 \
-  && rm -rf /var/cache/apk/*
+RUN apk add neovim
 
-RUN apk add --virtual build-deps --update \
-        autoconf \
-        automake \
-        cmake \
-        ncurses ncurses-dev ncurses-libs ncurses-terminfo \
-        gcc \
-        g++ \
-        libtool \
-        libuv \
-        linux-headers \
-        lua5.3-dev \
-        m4 \
-        unzip \
-        make 
+RUN apk add curl wget axel linux-headers build-base bash tini tree neovim neovim-doc \
+	python3 python3-dev sudo python the_silver_searcher the_silver_searcher-bash-completion
 
-
-RUN apk add --update \
-        curl \
-        git \
-        python \
-        py-pip \
-        python-dev \
-        python3-dev \
-        python3 &&\
-        python3 -m ensurepip && \
-        rm -r /usr/lib/python*/ensurepip && \
-        pip3 install --upgrade pip setuptools && \
-        rm -r /root/.cache
-
-ENV CMAKE_EXTRA_FLAGS=-DENABLE_JEMALLOC=OFF
-WORKDIR /tmp
-
-RUN git clone https://github.com/neovim/libtermkey.git && \
-  cd libtermkey && \
-  make && \
-  make install && \
-  cd ../ && rm -rf libtermkey
-
-RUN git clone https://github.com/neovim/libvterm.git && \
-  cd libvterm && \
-  make && \
-  make install && \
-  cd ../ && rm -rf libvterm
-
-RUN git clone https://github.com/neovim/unibilium.git && \
-  cd unibilium && \
-  make && \
-  make install && \
-  cd ../ && rm -rf unibilium
-
-RUN curl -L https://github.com/neovim/neovim/archive/nightly.tar.gz | tar xz && \
-  cd neovim-nightly && \
-  make && \
-  make install && \
-  cd ../ && rm -rf neovim-nightly
-
-# # Install neovim python support
-RUN pip3 install neovim
-RUN pip2 install neovim
-
-RUN apk del build-deps &&\
-   rm -rf /var/cache/apk/*
+RUN pip3 install --upgrade neovim jedi python-language-server
 ##########################################################################################################
 ENV HOME /home/me
 

@@ -5,6 +5,8 @@ chmod 700 ${HOME}/.ssh
 chmod 644 ${HOME}/.ssh/id_rsa.pub
 chmod 600 ${HOME}/.ssh/id_rsa
 
+ln -s /usr/bin/nvim /usr/bin/vim
+
 # Git config
 if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
     git config --global user.name "$GIT_USER_NAME"
